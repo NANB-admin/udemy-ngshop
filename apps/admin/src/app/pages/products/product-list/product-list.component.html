@@ -1,0 +1,69 @@
+<p-toast></p-toast>
+<div class="admin-page">
+
+  <p-card header="Products" subheader="List of all products">
+    <div class="p-grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button styleClass="p-button-success" label="New" icon="pi pi-plus" routerLink="form"></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+
+    <div class="p-grid">
+      <div class="col-12">
+        <p-table styleClass="p-datatable-gridlines" [value]="products" responsiveLayout="scroll" [paginator]="true"
+          [rows]="10" [rowsPerPageOptions]="[10,25,50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <!-- <th>Id</th> -->
+              <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th>Image</th>
+              <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon>
+              </th>
+              <th pSortableColumn="countInStock">Stock <p-sortIcon field="countInStock"></p-sortIcon>
+              </th>
+              <th pSortableColumn="category">Category <p-sortIcon field="Category"></p-sortIcon>
+              </th>
+              <th pSortableColumn="created">Created at <p-sortIcon field="created"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <!-- <td>{{category.id}}</td> -->
+              <td>{{product.name}}</td>
+              <td>
+                <!-- <img src="{{product.image}}" alt="{{product.name}}"> -->
+                <img [src]="product.image" style="width: 100%;" alt="{{product.name}}">
+              </td>
+              <td>{{product.price}}</td>
+              <td>{{product.countInStock}}</td>
+              <td>{{product.category.name}}</td>
+              <!--
+                Note:
+                  dateCreated field below is formatted using an Angular feature
+                  called 'DatePipe' with pre-defined date formats
+              -->
+              <td>{{product.dateCreated | date:'short'}}</td>
+              <td>
+                <p-button (click)="deleteProduct(product.id)" styleClass="p-button-danger p-mr-2" icon="pi pi-trash">
+                </p-button>
+                <p-button (click)="updateProduct(product.id)" styleClass="p-button-success p-mr-2" icon="pi pi-pencil">
+                </p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+  </p-card>
+</div>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
