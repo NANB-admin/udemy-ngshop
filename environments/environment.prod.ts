@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: "https://nanb-eshop-backend.herokuapp.com/api/v1/"
+  apiURL: "http://nanb.link:3000/api/v1/"
 };
