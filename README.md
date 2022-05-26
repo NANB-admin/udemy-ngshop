@@ -1,3 +1,15 @@
+------------------------
+start ngshop app
+------------------------
+	- nx serve ngshop
+	
+------------------------
+start admin app
+------------------------
+	- nx serve admin --port=4100
+
+
+
 
 
 # Angular
